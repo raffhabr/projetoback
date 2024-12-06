@@ -26,7 +26,7 @@ try {
     }
 
     // Buscar registros com base na pesquisa
-    $pesquisa = isset($_GET['pesquisa']) ? $_GET['pesquisa'] : '';
+    $pesquisa = isset($_GET['pesquisa']) ? $_GET['pesquisa'] : ''; 
     if ($pesquisa) {
         $sql = "SELECT i.usuario_id, i.Nome_Completo, i.E_mail, t.tipo_treino 
                 FROM informacoes i 
@@ -246,6 +246,7 @@ try {
         </table>
 
         <div class="message">
+        <a href="generate_pdf.php" class="btn">Baixar Lista de Usuários em PDF</a>
             <a href="admin_index.php" class="btn">Voltar para o Index</a>
         </div>
     </div>
