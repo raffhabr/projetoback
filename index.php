@@ -80,11 +80,25 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Academia FitLife</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     
 
 </head>
 
 <style>
+      :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #ff6600;
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --accent-color: #ff6600;
+        }
+
     * {
         margin: 0;
         padding: 0;
@@ -97,18 +111,25 @@ try {
     }
 
     body {
-        line-height: 1.6;
+        background-color: var(--bg-color);
+           
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
     }
 
     header {
         background: #333;
-        color: #fff;
+        color: var(--text-color);
         padding: 10px 0;
         text-align: center;
     }
 
     .logo h1 {
+        color: #ffffff;
         margin: 0;
+        text-align: center
     }
 
     nav ul {
@@ -138,13 +159,13 @@ try {
 
     .banner-content h2 {
         font-size: 50px;
-        color: #050000;
+        color: var(--text-color);
     }
 
     .banner-content p {
         font-size: 24px;
-        color: #333;
-        margin-bottom: 20px;
+        color: var(--text-color);   
+             margin-bottom: 20px;
     }
 
     .banner-content .btn {
@@ -169,6 +190,13 @@ try {
     }
 
     #sobre p {
+        color: var(--text-color); 
+        max-width: 800px;
+        margin: 20px auto;
+        font-size: 18px;
+    }
+    #sobre {
+        color: var(--text-color); 
         max-width: 800px;
         margin: 20px auto;
         font-size: 18px;
@@ -178,6 +206,10 @@ try {
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        color: var(--text-color);
+    }
+    #titulo_plano{
+        color: var(--text-color);
     }
 
     .plano {
@@ -188,16 +220,18 @@ try {
         display: inline-block;
         padding: 20px 40px;
         background-color: #ff6600;
-        color: #000000;
+        color: var(--text-color);
         text-align: center;
         cursor: pointer;
         border-radius: 5px;
         font-size: 18px;
+
     }
 
     .plano h3 {
         margin-bottom: 10px;
         font-size: 22px;
+        color: var(--text-color);
     }
 
     footer {
@@ -249,10 +283,48 @@ try {
         border-radius: 5px;
         text-align: center;
     }
+    #dark-mode-toggle, #font-size-toggle {
+    background: var(--accent-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+#dark-mode-toggle:hover, #font-size-toggle:hover {
+    background: #e65c00;
+    box-shadow: 0 5px 20px rgba(255, 102, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+    #font-size-toggle {
+    background: var(--accent-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+    transition: all 0.3s ease;
+}
+#font-size-toggle:hover {
+    background: #e65c00;
+    box-shadow: 0 5px 20px rgba(255, 102, 0, 0.5);
+    transform: translateY(-2px);
+}
+.large-font {
+        font-size: 1.2em; /* Aumenta o tamanho da fonte para 20% maior */
+}
+
 </style>
 
 
-</style>
+
 
 <body>
    
@@ -262,15 +334,36 @@ try {
         </div>
         <nav>
         
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#planos">Planos</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a href= perfil.php>perfil</a></li>
-                <li><a href="logout.php">Logout</a></li>
+            <ul id=side_itens>
+                <li class="side_item">
+                    <a href="#home">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Início</span></a></li>
+                <li class="side_item">
+                    <a href="#sobre">
+                    <i class="fa-solid fa-people-group"></i>
+                    <span>Sobre</span></a></li>
+                <li class="side_item">
+                    <a href="#planos">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    <span>Planos</span></a></li>
+                <li class="side_item">
+                    <a href="#contato">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Contato</span></a></li>
+                <li class="side_item">
+                    <a href= perfil.php>
+                    <i class="fa-solid fa-user"></i>
+                    <span>perfil</span></a></li>
+                <li class="side_item">
+                    <a href="logout.php">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span></a></li>
             </ul>
         </nav>
+        <button id="dark-mode-toggle">Alternar Claridade</button>
+        <button id="font-size-toggle">Alternar Fonte</button>
+
     </header>
 
     <section id="home" class="banner">
@@ -291,18 +384,18 @@ try {
     </section>
 
     <section id="planos">
-        <h2>Nossos Planos</h2>
+        <h2 id= titulo_plano>Escolha seu treino</h2>
          <form method="POST" class="treinos">
             <div class="plano">
-                <h3>Plano A</h3>
+                <h3>Superiores </h3>
                 <button type="submit" name="tipo_treino" value="Treino A">Treino A</button>
             </div>
             <div class="plano">
-                <h3>Plano B</h3>
+                <h3>Inferiores</h3>
                 <button type="submit" name="tipo_treino" value="Treino B">Treino B</button>
             </div>
             <div class="plano">
-                <h3>Plano C</h3>
+                <h3>Inferiores e Superiores</h3>
                 <button type="submit" name="tipo_treino" value="Treino C">Treino C</button>
             </div>
         </form>
@@ -314,13 +407,35 @@ try {
 
     <footer id="contato">
         <h2>Contato</h2>
-        <p>Endereço: Rua Sarandi 69, - Nova york</p>
+        <p>Endereço: Av. Paris, 84 - Bonsucesso Rio de Janeiro</p>
         <p>Telefone: (21) 99999-9999</p>
         <p>Email: contato@fitlife.com.br</p>
         <div class="social-media">
-            <a href="#"><img src="icon-facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="icon-instagram.png" alt="Instagram"></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i> </a>
         </div>
     </footer>
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const fontSizeToggle = document.getElementById('font-size-toggle');
+
+        // Verifica se o modo escuro está ativo no localStorage
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+        });    fontSizeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('large-font');
+        const isLargeFont = document.body.classList.contains('large-font');
+        localStorage.setItem('largeFont', isLargeFont);
+    });
+
+    </script>
 </body>
 </html>
+index.php
+14 KB

@@ -54,13 +54,18 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil</title>
     <style>
+        .dark-mode {
+    background-color: #121212;
+    color: #ffffff;}
         /* Reset básico */
         body, h1, h2, p {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        header.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;    }
         /* Corpo */
         body {
             font-family: Arial, sans-serif;
@@ -97,20 +102,23 @@ try {
         /* Informações do perfil */
         .perfil-info {
             padding: 20px;
+            color:black;
         }
 
         .perfil-info h2 {
             font-size: 20px;
             margin-bottom: 15px;
-            color: #007BFF;
+            color: black;
             border-bottom: 2px solid #007BFF;
             display: inline-block;
             padding-bottom: 5px;
         }
-
+        #h2_treinos{
+            color: black    }
         .perfil-info p {
             margin-bottom: 10px;
             font-size: 16px;
+
         }
 
         .perfil-info strong {
@@ -126,7 +134,10 @@ try {
             color: #777;
             border-top: 1px solid #eaeaea;
         }
-
+        footer.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
         footer p {
             margin: 0;
         }
@@ -146,11 +157,11 @@ try {
             <p><strong>Telefone:</strong> <?php echo htmlspecialchars($usuario['Telefone_Celular']); ?></p>
             <p><strong>Data de Nascimento:</strong> <?php echo htmlspecialchars($usuario['Data_de_Nascimento']); ?></p>
 
-            <h2>Treinos Associados</h2>
+            <h2 id=h2_treinos>Treinos Associados</h2>
             <?php if (!empty($treinos)): ?>
                 <ul>
                     <?php foreach ($treinos as $treino): ?>
-                        <li><?php echo htmlspecialchars($treino); ?></li>
+                        <li id= h2_treinos><?php echo htmlspecialchars($treino); ?></li>
                     <?php endforeach; ?>
                 </ul>
             <?php else: ?>
@@ -164,5 +175,13 @@ try {
             <p>&copy; 2024 Academia Online. Todos os direitos reservados.</p>
         </footer>
     </div>
+    <script>
+    // Verificar o estado do Dark Mode no localStorage ao carregar a página
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('header').classList.add('dark-mode');
+        document.querySelector('footer').classList.add('dark-mode');
+    }
+</script>
 </body>
 </html>
