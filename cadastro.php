@@ -120,7 +120,7 @@
             </div>
             <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" id="cpf" name="cpf" pattern="\d{11}" placeholder="Apenas números" required>
+                <input type="text" id="cpf" name="cpf"  placeholder="Apenas números" required oninput="mascaraCPF(this)">
             </div>
             <div class="form-group">
                 <label for="email">E-mail</label>
@@ -128,11 +128,11 @@
             </div>
             <div class="form-group">
                 <label for="telefone_celular">Telefone Celular</label>
-                <input type="tel" id="telefone_celular" name="telefone_celular" pattern="\d{11}" placeholder="Apenas números" required>
+                <input type="tel" id="telefone_celular" name="telefone_celular"  placeholder="Apenas números" required oninput="mascaraTelefone(this)">
             </div>
             <div class="form-group">
                 <label for="telefone_fixo">Telefone Fixo</label>
-                <input type="tel" id="telefone_fixo" name="telefone_fixo" pattern="\d{8,10}" placeholder="Apenas números">
+                <input type="tel" id="telefone_fixo" name="telefone_fixo"  placeholder="Apenas números" oninput="mascaraTelefoneFixo(this)">
             </div>
             <div class="form-group">
                 <label for="endereco_completo">Endereço Completo</label>
@@ -179,10 +179,35 @@
             });
         });
     });
+
+    function mascaraTelefone(input) {
+            var valor = input.value.replace(/\D/g, ''); // Remove qualquer coisa que não seja número
+            var ddd = valor.slice(0, 2); // Extrai os dois primeiros números para o DDD
+            var numero = valor.slice(2); // Extrai o restante dos números
+
+            // Aplica a máscara no formato (XX) XXXXX-XXXX
+            input.value = `(${ddd}) ${numero.slice(0, 5)}-${numero.slice(5, 9)}`;
+        }
+        function mascaraCPF(input) {
+            var valor = input.value.replace(/\D/g, ''); // Remove qualquer coisa que não seja número
+            var parte1 = valor.slice(0, 3); // Primeiros 3 números
+            var parte2 = valor.slice(3, 6); // Próximos 3 números
+            var parte3 = valor.slice(6, 9); // Próximos 3 números
+            var parte4 = valor.slice(9, 11); // Últimos 2 números
+
+            // Aplica a máscara no formato XXX.XXX.XXX-XX
+            input.value = `${parte1}.${parte2}.${parte3}-${parte4}`;
+        }
+
+        function mascaraTelefoneFixo(input) {
+            var valor = input.value.replace(/\D/g, ''); // Remove qualquer coisa que não seja número
+            var ddd = valor.slice(0, 2); // Extrai os dois primeiros números para o DDD
+            var numero = valor.slice(2); // Extrai o restante dos números
+
+            // Aplica a máscara no formato (XX) XXXX-XXXX
+            input.value = `(${ddd}) ${numero.slice(0, 4)}-${numero.slice(4, 8)}`;
+        }
 </script>
-
-
-
 
 </body>
 
